@@ -21,8 +21,7 @@ pub fn app() -> Html {
 
     html! {
         <div class={title_style}>
-            <MainTitle title="Gorillawrite"/>
-            <RandomWords count="10"/>
+            <MainTitle title="Gorillatest"/>
         </div>
     }
 }
