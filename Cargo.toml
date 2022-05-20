@@ -1,5 +1,5 @@
 [package]
-name = "gorillatype"
+name = "gorillatest"
 version = "0.1.0"
 edition = "2021"
 
@@ -11,3 +11,7 @@ gloo = "0.7.0"
 serde = "1.0.137"
 serde_json = "1.0.81"
 stylist = {version = "0.10.0", features = ["yew"]}
+web-sys = {version = "0.3.57", features = ["HtmlInputElement"]}
+wasm-bindgen = "0.2.80"
+wasm-bindgen-futures = "0.4.30"
+reqwest = "0.11.10"
