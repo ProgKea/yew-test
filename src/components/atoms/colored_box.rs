@@ -5,12 +5,14 @@ use yew::prelude::*;
 pub struct Props {
     pub color: Color,
     pub text: String,
+    pub handle_onclick: Callback<()>,
 }
 
 #[derive(PartialEq)]
 pub enum Color {
     Green,
     Red,
+    Blue,
 }
 
 impl Color {
@@ -18,6 +20,7 @@ impl Color {
         match self {
             Color::Green => "green".to_owned(),
             Color::Red => "red".to_owned(),
+            Color::Blue => "blue".to_owned(),
         }
     }
 }
@@ -27,11 +30,15 @@ pub fn colored_box(props: &Props) -> Html {
     let stylesheet = style!(
         r#"
         .green {
-            background-color: Green;
+            background-color: #73c936;
         }
 
         .red {
-            background-color: Red;
+            background-color: #f43841;
+        }
+
+        .blue {
+            background-color: #1e90ff;
         }
 
         button {
@@ -44,14 +51,21 @@ pub fn colored_box(props: &Props) -> Html {
             font-size: 100%;
             width: 50%;
             height: 264px;
+            border-radius: 8px;
         }
         "#
     )
     .unwrap();
 
+    let handle_onclick = props.handle_onclick.clone();
+
+    let onclick = Callback::from(move |_| {
+        handle_onclick.emit(());
+    });
+
     html! {
         <div class={stylesheet}>
-            <button class={props.color.to_string()}>{&props.text}</button>
+            <button onclick={onclick} class={props.color.to_string()}>{&props.text}</button>
         </div>
     }
 }
